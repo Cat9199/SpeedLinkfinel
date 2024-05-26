@@ -1,0 +1,144 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="box card-box">
+            <div class="icon-box bg-color-1">
+                <div class="icon bg-icon-5">
+                    <i class='bx bx-package' style="font-size: 24px;"></i>
+                </div>
+                <div class="content">
+                    <h5 class="title-box">Total Shipment</h5>
+                    <p class="color-1 mb-0 pt-4">{{AllShipmentCount}} Unread notification</p>
+                </div>
+            </div>
+            <div class="icon-box bg-color-1">
+                <div class="icon bg-icon-8">
+                    <i class='bx bx-stopwatch bx-flashing' style="font-size: 24px;"></i>
+                </div>
+                <div class="content">
+                    <h5 class="title-box">Pending Shipment</h5>
+                    <p class="color-1 mb-0 pt-4">{{PendingShipmentcount}} Unread notification</p>
+                </div>
+            </div>
+            <div class="icon-box bg-color-1">
+                <div class="icon bg-icon-6">
+                    <i class='bx bx-package'></i>
+                </div>
+                <div class="content">
+                    <h5 class="title-box">Delivered</h5>
+                    <p class="color-1 mb-0 pt-4">{{DeliveredShipmentcount}} Unread notification</p>
+                </div>
+            </div>
+            <div class="icon-box bg-color-1">
+                <div class="icon bg-icon-7">
+                    <i class='bx bx-x' style="font-size: 24px;"></i>
+                </div>
+                <div class="content">
+                    <h5 class="title-box">Cancel Shipment</h5>
+                    <p class="color-1 mb-0 pt-4">{{CancelledShipmentcount}} Unread notification</p>
+                </div>
+            </div>
+             
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="box">
+            <div class="box-body pb-30">
+                <div class="row">
+                    <div class="col-md-12 col-xl-10 mb-0">
+                        <div class="row">
+                            <div class="col-md-12 col-xl-4 mb-0">
+                                <div class="form-group"> <label class="form-label">From:</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="bx bx-calendar"></i> </div>
+                                        </div><input class="form-control fc-datepicker" placeholder="DD-MM-YYYY" type="text"> </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-xl-4 mb-0">
+                                <div class="form-group"> <label class="form-label">To:</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="bx bx-calendar"></i> </div>
+                                        </div><input class="form-control fc-datepicker" placeholder="DD-MM-YYYY" type="text"> </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-xl-4 mb-0">
+                                <div class="form-group"> <label class="form-label">Select Priority:</label> <select name="attendance" class="form-control custom-select select2 select2-hidden-accessible" data-placeholder="Select Priority" tabindex="-1" aria-hidden="true" data-select2-id="select2-data-16-akyu"><option label="Select Priority" data-select2-id="select2-data-18-ezae"></option> <option value="1">High</option> <option value="2">Medium</option> <option value="3">Low</option> </select>
+                                    <span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-17-6y8j" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-attendance-ws-container" aria-controls="select2-attendance-ws-container"><span class="select2-selection__rendered" id="select2-attendance-ws-container" role="textbox" aria-readonly="true" title="Select Priority"></span>
+                                    <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>
+                                    </span>
+                                    </span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xl-2 mb-0">
+                        <div class="form-group mt-32"> <a href="#" class="btn bg-primary btn-block color-white">Search</a> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="table-responsive">
+                    <div id="task-profile_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-vcenter text-nowrap table-bordered dataTable no-footer" id="task-profile" role="grid">
+                                    <thead>
+                                        <tr class="top">
+                                            <th class="border-bottom-0 text-center sorting fs-14 font-w500" tabindex="0" aria-controls="task-profile" rowspan="1" colspan="1">No</th>
+                                            <th class="border-bottom-0 sorting fs-14 font-w500" tabindex="0" aria-controls="task-profile" rowspan="1" colspan="1">Shipment Code</th>
+                                            <th class="border-bottom-0 sorting fs-14 font-w500" tabindex="0" aria-controls="task-profile" rowspan="1" colspan="1">Sender</th>
+                                            <th class="border-bottom-0 sorting fs-14 font-w500" tabindex="0" aria-controls="task-profile" rowspan="1" colspan="1">Receiver</th>
+                                            <th class="border-bottom-0 sorting fs-14 font-w500" tabindex="0" aria-controls="task-profile" rowspan="1" colspan="1">Receiver Phone</th>
+                                            <th class="border-bottom-0 sorting fs-14 font-w500" tabindex="0" aria-controls="task-profile" rowspan="1" colspan="1">Receiver City</th>
+                                            <th class="border-bottom-0 sorting fs-14 font-w500" tabindex="0" aria-controls="task-profile" rowspan="1" colspan="1">Status</th>
+                                            <th class="border-bottom-0 sorting_disabled fs-14 font-w500" rowspan="1" colspan="1">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for shipment in AllShipmentList %}
+                                        <tr class="{{ loop.cycle('odd', 'even') }}">
+                                            <td class="text-center">{{ loop.index }}</td>
+                                            <td>{{ shipment.Shipment_code }}</td>
+                                            <td>{{ shipment.sender }}</td>
+                                            <td>{{ shipment.receiver }}</td>
+                                            <td>{{ shipment.receiver_phone1 }}</td>
+                                            <td>{{ shipment.receiver_city }}</td>
+                                            <td>
+                                                {% if shipment.status == 'Pending' %}
+                                                    <span class="badge badge-warning">Pending</span>
+                                                {% elif shipment.status == 'Delivered' %}
+                                                    <span class="badge badge-success">Delivered</span>
+                                                {% elif shipment.status == 'Cancelled' %}
+                                                    <span class="badge badge-danger">Cancelled</span>
+                                                {% else %}
+                                                    <span class="badge badge-secondary">{{ shipment.status }}</span>
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <a href="javascript:void(0);" class="btn-link" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <i class="bx bx-dots-horizontal-rounded"></i>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_shipment"><i class="bx bx-trash"></i> Delete</a>
+                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_shipment"><i class="bx bx-edit mr-5"></i> Edit</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

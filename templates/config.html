@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-6">
+        <center>
+            
+            <div class="list-action">
+                <a href="#" class="add" data-toggle="modal" data-target="#add_key">Add key<i class="fas fa-plus-circle"></i></a>
+            </div>
+            <h2>System Settings</h2>
+        </center>
+        <div class="box">
+            <div class="box-body">
+                <div class="table-responsive">
+                    <table class="table table-vcenter text-nowrap table-bordered dataTable no-footer" id="settings-table" role="grid">
+                        <thead>
+                            <tr class="top">
+                                <th>No</th>
+                                <th>Key</th>
+                                <th>Value</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for setting in settings %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ setting.key }}</td>
+                                <td>{{ setting.value }}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <a href="javascript:void(0);" class="btn-link" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bx bx-dots-horizontal-rounded"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_setting"><i class="bx bx-edit mr-5"></i> Edit</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        
+        <center>
+
+            
+                            <div class="list-action">
+                                <a href="#" class="add" data-toggle="modal" data-target="#add_city">Add City<i class="fas fa-plus-circle"></i></a>
+                            </div>
+            <h2>System Cities</h2>
+
+        </center>
+        <div class="box">
+
+        <div class="box">
+            
+            <div class="box-body">
+                
+                <div class="table-responsive">
+                    
+                    <table class="table table-vcenter text-nowrap table-bordered dataTable no-footer" id="cities-table" role="grid">
+                        <thead>
+                            <tr class="top">
+                                <th>No</th>
+                                <th>City</th>
+                                <th>Default Price</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for city in cities %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ city.city }}</td>
+                                <td>{{ city.default_price }} L.E </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <a href="javascript:void(0);" class="btn-link" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bx bx-dots-horizontal-rounded"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_city"><i class="bx bx-edit mr-5"></i> Edit</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="add_city" class="modal custom-modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add City</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{{ url_for('add_city') }}">
+                    <div class="form-group">
+                        <label>City Name:</label>
+                        <input type="text" class="form-control" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Defense Shipoing Price :</label>
+                        <input type="number" class="form-control" name="default_price" required>
+                    </div>
+
+                    <div class="submit-section text-center">
+                        <button class="btn btn-primary submit-btn" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="add_key" class="modal custom-modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add City</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{{ url_for('add_key') }}">
+                    <div class="form-group">
+                        <label>Key Name:</label>
+                        <input type="text" class="form-control" name="key" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Key Value :</label>
+                        <input type="text" class="form-control" name="value" required>
+                    </div>
+
+                    <div class="submit-section text-center">
+                        <button class="btn btn-primary submit-btn" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

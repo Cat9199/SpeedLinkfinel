@@ -1,0 +1,5 @@
+Lib/
+Script/
+migrations/
+Include/
+__pycache__/

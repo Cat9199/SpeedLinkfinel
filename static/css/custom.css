@@ -1,0 +1,26 @@
+/* .badge {
+
+      background-color: red;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;      
+      align-items: center;
+}
+.login-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 50px; /* Default padding for desktop */
+    }
+    .login-content img {
+      width: 265px ;
+    }
+    /* Adjust login content layout for mobile */
+    @media screen and (max-width: 767px) {
+      .login-content {
+        padding: 20px; /* Adjusted padding for mobile */
+      }
+    } */

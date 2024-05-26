@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="box">
+            <div class="box-body d-flex justify-content-between pt-0 pb-0">
+                <div class="search-form d-flex">
+                    <input type="text" placeholder="Search by Name, Phone, or Email" class="form-control" id="search-input">
+                    <button type="button" class="search d-flex" id="filter-btn"><i class="fas fa-search"></i>Search</button>
+                </div>
+                <div class="list-action">
+                    <a class="list" href="#" onclick="liststyle()"><i class='bx bx-menu'></i></a>
+                    <a href="#" class="list-board active" onclick="listboard()"><i class='bx bxs-dashboard'></i></a>
+                    <a href="#" class="add" data-toggle="modal" data-target="#add_client">Add Client<i class="fas fa-plus-circle"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% for user in users %}
+    <div class="col-3 col-md-6 col-sm-12 mb-25 user-card" data-user-type="{{ user.user_type }}">
+        <div class="box client">
+            <div class="dropdown">
+                <a href="javascript:void(0);" class="btn-link" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class='bx bx-dots-horizontal-rounded'></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item delete-user" href="/delete_client/{{user.id}}"><i class="bx bx-trash"></i> Delete</a>
+                    <a class="dropdown-item edit-user" href="#" data-toggle="modal" data-target="#edit_client" data-user-id="{{ user.id }}"><i class="bx bx-edit mr-5"></i>Edit</a>
+                </div>
+            </div>
+            <div class="box-body pt-5 pb-0">
+                <div class="img-box">
+                    <img src="https://avatar.iran.liara.run/username?username={{user.username}}" width="100px" alt="">
+                    <div class="pulse-css"></div>
+                </div>
+                <a href=""><h5 class="mt-17">{{ user.first_name }} {{ user.last_name }}</h5></a>
+                <p class="fs-14 font-w400 font-main">User Type: <span class="text-clo-primary font-w500 pl-4">{{ user.user_type }}</span></p>
+                <ul class="info">
+                    <li class="fs-14"><i class='bx bxs-phone'></i>{{ user.phone }}</li>
+                    <li class="fs-14"><i class='bx bxs-envelope'></i>{{ user.email }}</li>
+                </ul>
+                <div class="group-btn d-flex justify-content-between">
+                    <a class="bg-btn-sec color-main" style="width: 100%;" href="user-profile.html">View Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div id="add_client" class="modal custom-modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Client</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{{ url_for('add_client') }}">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" name="first_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" name="last_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" class="form-control" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" class="form-control" name="address" required>
+                    </div>
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" class="form-control" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label>User Type</label>
+                        <select class="form-control select" name="user_type" required>
+                            <option value="" disabled selected>Select User Type</option>
+                            <option value="Admin">Admin</option>
+                            <option value="shipper">Shipper</option>
+                            <option value="delivery">Delivery</option>
+                        </select>
+                    </div>
+                    <div class="submit-section text-center">
+                        <button class="btn btn-primary submit-btn" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="overlay"></div>
+
+{% endblock %}
+
+<script>
+    $(document).ready(function() {
+        $('#search-input').on('input', function() {
+            var searchText = $(this).val().toLowerCase();
+
+            $('.user-card').each(function() {
+                var cardName = $(this).find('h5').text().toLowerCase();
+                var cardPhone = $(this).find('.info li:nth-child(1)').text().toLowerCase();
+                var cardEmail = $(this).find('.info li:nth-child(2)').text().toLowerCase();
+                if (cardName.includes(searchText) || cardPhone.includes(searchText) || cardEmail.includes(searchText)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+</script>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        SpeedLink - {{title}}
+    </title>
+    <link rel="shortcut icon" href="/static/images/favicon.png" type="image/png">
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!-- BOXICONS -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Plugin -->
+    <link rel="stylesheet" href="/static/libs/owl.carousel/assets/owl.carousel.min.css">
+
+    <!-- APP CSS -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/grid.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/responsive.css">
+    <link rel="stylesheet" href="/static/css/custom.css">
+    <link rel="shortcut icon" href="/static/images/favicon.png" type="image/png">
+
+</head>
+
+<body>
+    <div class="login-content">
+
+        <section class="login">
+            <div class="row">
+                <div class="col-12">
+                    <div class="box">
+                        <div class="box-header d-flex justify-content-between">
+                            <a href="index.html">
+                                <img src="/static/images/logo.png" alt="">
+                            </a>
+
+                            <div class="action-reg">
+                                <h4 class="fs-30">Login</h4>
+
+                            </div>
+
+                        </div>
+                        <div class="line"></div>
+                        <div class="box-body">
+                            <div class="auth-content my-auto">
+                                <!-- render error messanges -->
+                                {% if message %}
+                                <div class="alert ">
+                                    {{ message }}
+                                </div>
+                                {% endif %}
+                                <form class="mt-5 pt-2" action="/login" method="POST">
+                                    <div class="mb-24">
+                                        <label class="form-label mb-14">Mail or User Name</label>
+                                        <input type="text" class="form-control" id="username" name="username"
+                                            placeholder="Your text">
+                                    </div>
+                                    <div class="mb-16">
+                                        <div class="d-flex align-items-start">
+                                            <div class="flex-grow-1">
+                                                <label class="form-label mb-14">Password</label>
+                                            </div>
+                                            <div class="flex-shrink-0">
+                                                <div class="">
+                                                    <a href="#" class="text-muted">Forgot password?</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="input-group auth-pass-inputgroup">
+                                            <input type="password" class="form-control" placeholder="Enter password"
+                                                name="password" aria-label="Password" aria-describedby="password-addon">
+                                            <button class="btn shadow-none ms-0" type="button" id="password-addon"><i
+                                                    class="far fa-eye-slash"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-29">
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="remember-check">
+                                                <label class="form-check-label fs-14" for="remember-check">
+                                                    Remember me
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="mb-3">
+                                        <button
+                                            class="btn bg-primary color-white w-100 waves-effect waves-light fs-18 font-w500"
+                                            type="submit">Sign in</button>
+                                    </div>
+                                </form>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <div class="overlay"></div>
+
+
+    <div class="overlay"></div>
+    <script src="/static/libs/jquery/jquery.min.js"></script>
+    <script src="/static/libs/moment/min/moment.min.js"></script>
+    <script src="/static/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/libs/peity/jquery.peity.min.js"></script>
+    <script src="/static/libs/chart.js/Chart.bundle.min.js"></script>
+    <script src="/static/libs/owl.carousel/owl.carousel.min.js"></script>
+    <script src="/static/libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/libs/apexcharts/apexcharts.js"></script>
+    <script src="/static/libs/simplebar/simplebar.min.js"></script>
+
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/dashboard.js"></script>
+    <script src="/static/js/shortcode.js"></script>
+    <script src="/static/js/pages/dashboard.js"></script>
+
+
+    <script>
+    </script>
+</body>
+
+</html>
