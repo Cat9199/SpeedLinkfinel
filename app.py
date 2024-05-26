@@ -327,5 +327,21 @@ if '__main__' == __name__ :
       with app.app_context():
             db.create_all()
             print('Database Created and her path is : speedlink.db')
+            # check if the user table is empty and create a default admin user
+            if not User.query.first():
+                  new_user = User(
+                        first_name   ='Admin',
+                        last_name    ='Admin',
+                        username     ='admin',
+                        password     ='admin',
+                        email        = 'admin@admin.com',
+                        phone        = '123456789',
+                        address      = 'Admin Address',
+                        city         = 'Admin City',
+                        user_type    = 'admin'
+                  )
+                  db.session.add(new_user)
+                  db.session.commit()
+
       print(ShipmentCodeGenerator())
       app.run(debug=True, port=5000, host='0.0.0.0')
