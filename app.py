@@ -328,4 +328,4 @@ if '__main__' == __name__ :
             db.create_all()
             print('Database Created and her path is : speedlink.db')
       print(ShipmentCodeGenerator())
-      app.run(debug=True)
+      app.run(debug=True, port=5000, host='0.0.0.0')
