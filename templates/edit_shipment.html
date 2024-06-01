@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="messages">
+    <center>
+        {% if message %}
+        <div class="alert alert-{{ message_type }}">
+            {{ message }}
+        </div>
+        {% endif %}
+    </center>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <form action="/edit_shipment/{{ shipment.id }}" method="post">
+        <div class="box">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 mb-24">
+                            <div class="form-group">
+                                <label class="form-label">Shipment Code</label>
+                                <input class="form-control" value="{{ shipment.shipment_code }}" name="shipment_code" >
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-12 mb-24">
+                            <div class="form-group">
+                                <label class="form-label">Sender</label>
+                                <input class="form-control" placeholder="Enter Sender" name="sender" value="{{ shipment.sender }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 mb-24">
+                            <div class="form-group">
+                                <label class="form-label">Receiver</label>
+                                <input class="form-control" placeholder="Enter Receiver's Name" name="receiver" value="{{ shipment.receiver }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 mb-24">
+                            <div class="form-group">
+                                <label class="form-label">Receiver Phone 1</label>
+                                <input name="receiver_phone1" class="form-control" placeholder="Enter Receiver's Phone 1" value="{{ shipment.receiver_phone1 }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 mb-24">
+                            <div class="form-group">
+                                <label class="form-label">Receiver Phone 2</label>
+                                <input name="receiver_phone2" class="form-control" placeholder="Enter Receiver's Phone 2" value="{{ shipment.receiver_phone2 }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 mb-24">
+                            <div class="form-group">
+                                <label class="form-label">Receiver City</label>
+                                <input name="receiver_city" class="form-control" placeholder="Enter Receiver City" value="{{ shipment.receiver_city }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 mb-24">
+                            <div class="form-group">
+                                <label class="form-label">Receiver Address</label>
+                                <textarea class="form-control" placeholder="Enter Receiver's Address" rows="3" name="receiver_address">{{ shipment.receiver_address }}</textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 mb-24">
+                            <div class="form-group">
+                                <label class="form-label">Price ( L.E )</label>
+                                <input class="form-control" placeholder="Enter Price" name="price" value="{{ shipment.price }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 mb-24">
+                            <div class="form-group">
+                                <label class="form-label">Status</label>
+                                <select name="status" class="form-control custom-select select2 select2-hidden-accessible" data-placeholder="Select Status" tabindex="-1" aria-hidden="true">
+                                    <option label="Select Status"></option>
+                                    <option value="Pending" {% if status == 'Pending' %}selected{% endif %}>Pending</option>
+                                    <option value="Processing" {% if status == 'Processing' %}selected{% endif %}>Processing</option>
+                                    <option value="Delivered" {% if status == 'Delivered' %}selected{% endif %}>Delivered</option>
+                                    <option value="Cancelled" {% if status == 'Cancelled' %}selected{% endif %}>Cancelled</option>
+                                    <option value="Returned" {% if status == 'Returned' %}selected{% endif %}>Returned</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 mb-24">
+                            <div class="custom-controls-stacked d-lg-flex align-items-center">
+                                <label class="form-label mt-1 fs-18 font-w500 color-primary">Payment Status:</label>
+                                <label class="custom-control custom-radio success me-4">
+                                    <input type="radio" class="custom-control-input" name="payment_status" value="Paid" {% if payment_status == 'Paid' %}checked{% endif %}>
+                                    <span class="custom-control-label">Paid</span>
+                                </label>
+                                <label class="custom-control custom-radio success me-4">
+                                    <input type="radio" class="custom-control-input" name="payment_status" value="Unpaid" {% if payment_status == 'Unpaid' %}checked{% endif %}>
+                                    <span class="custom-control-label">Unpaid</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gr-btn mt-15">
+                    <a href="#" class="btn btn-danger btn-lg mr-15 fs-16">CLOSE</a>
+                    <button class="btn btn-primary btn-lg fs-16" type="submit">SUBMIT</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

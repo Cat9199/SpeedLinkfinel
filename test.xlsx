@@ -1,0 +1,4 @@
+shipment_code  | sender  | receiver  | receiver_phone1 | receiver_phone2 | receiver_city | receiver_address            | status    | price
+SL-123456      | John    | Alice     | 123-456-7890    | 987-654-3210    | New York     | 123 Main Street, Apt 1     | Pending   | 50.00
+SL-789012      | Bob     | Emma      | 111-222-3333    | 444-555-6666    | Los Angeles  | 456 Elm Street, Suite 2    | Delivered | 75.00
+SL-345678      | Alice   | John      | 555-666-7777    | 888-999-0000    | Chicago      | 789 Oak Avenue, Floor 3    | Processing| 60.00

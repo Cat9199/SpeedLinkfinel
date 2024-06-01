@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shipment Details</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <!-- Logo -->
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Company Logo" style="width: 100px; height: auto;">
+
+    <!-- User Information -->
+    <h2>User Information</h2>
+    <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+    <!-- Add more user details here -->
+
+    <!-- Shipments -->
+    <h2>Shipments</h2>
+    <ul>
+        {% for shipment in shipments %}
+        <li>
+            <p>Shipment Code: {{ shipment.shipment_code }}</p>
+            <!-- Add more shipment details here -->
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

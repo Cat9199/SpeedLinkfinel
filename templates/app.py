@@ -145,9 +145,6 @@ MODEL_MAPPING = {
 
 def get_model_by_name(name):
     return MODEL_MAPPING.get(name.lower())
-@app.route('/')
-def index():
-      return redirect('/login')
 @app.route('/e/<table>/<int:id>', methods=['GET', 'POST'])
 def edit_record(table, id):
     if not session.get('logged_in'):
@@ -440,8 +437,6 @@ def download_shipment(id):
       return Response(pdf_bytes, mimetype='application/pdf', headers=headers)
 @app.route('/login')
 def admin_login():
-      if session.get('logged_in'):
-            return redirect('/dashboard')
       return render_template('login.html')
 
 @app.route('/login', methods=['POST'])

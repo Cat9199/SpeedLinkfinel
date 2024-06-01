@@ -1,52 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="row">
-    <div class="col-6">
-        <center>
-            
-            <div class="list-action">
-                <a href="#" class="add" data-toggle="modal" data-target="#add_key">Add key<i class="fas fa-plus-circle"></i></a>
-            </div>
-            <h2>System Settings</h2>
-        </center>
-        <div class="box">
-            <div class="box-body">
-                <div class="table-responsive">
-                    <table class="table table-vcenter text-nowrap table-bordered dataTable no-footer" id="settings-table" role="grid">
-                        <thead>
-                            <tr class="top">
-                                <th>No</th>
-                                <th>Key</th>
-                                <th>Value</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for setting in settings %}
-                            <tr>
-                                <td>{{ loop.index }}</td>
-                                <td>{{ setting.key }}</td>
-                                <td>{{ setting.value }}</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a href="javascript:void(0);" class="btn-link" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="bx bx-dots-horizontal-rounded"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="/e/SystemSetting/{{ setting.id }}" ><i class="bx bx-edit mr-5"></i> Edit</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-6">
-        
+    <div class="col-12">
         <center>
 
             
@@ -78,14 +33,14 @@
                             <tr>
                                 <td>{{ loop.index }}</td>
                                 <td>{{ city.city }}</td>
-                                <td>{{ city.default_price }} L.E </td>
+                                <td>{{ city.price }} L.E </td>
                                 <td>
                                     <div class="dropdown">
                                         <a href="javascript:void(0);" class="btn-link" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="bx bx-dots-horizontal-rounded"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="/e/SystemCity/{{city.id}}" ><i class="bx bx-edit mr-5"></i> Edit</a>
+                                            <a class="dropdown-item" href="/e/ShippingPrice/{{city.id}}"><i class="bx bx-edit mr-5"></i> Edit</a>
                                         </div>
                                     </div>
                                 </td>

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="messages">
+    <center>
+        {% if message %}
+        <div class="alert alert-{{ message_type }}">
+            {{ message }}
+        </div>
+        {% endif %}
+    </center>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Edit {{ table }}</h3>
+            </div>
+            <form method="POST">
+                <div class="box-body">
+                    <div class="row">
+                        {% for field in record.__table__.columns %}
+                        <div class="col-md-6 col-sm-12 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">{{ field.name | capitalize }}</label>
+                                {% if field.type.python_type == datetime %}
+                                <input class="form-control" type="datetime-local" name="{{ field.name }}" value="{{ record|getattr(field.name)|strftime('%Y-%m-%dT%H:%M:%S') }}">
+                                {% else %}
+                                <input class="form-control" type="text" name="{{ field.name }}" value="{{ record|getattr(field.name) }}">
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="box-footer d-flex justify-content-between">
+                    <a href="#" class="btn btn-danger btn-lg fs-16">Close</a>
+                    <button class="btn btn-primary btn-lg fs-16" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
