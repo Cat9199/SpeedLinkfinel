@@ -512,9 +512,9 @@ def add_client():
 
     first_name = request.form['first_name']
     last_name = request.form['last_name']
-    username = request.form['username']
+    username = request.form['phone']
     password = request.form['password']
-    email = request.form['email']
+    email = request.form['phone']
     phone = request.form['phone']
     address = request.form['address']
     city = request.form['city']
