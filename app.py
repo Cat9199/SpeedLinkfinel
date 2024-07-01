@@ -121,7 +121,12 @@ def dashboard():
             shipments_query = Shipment.query
       else:
             shipments_query = Shipment.query.filter_by(sender=user_id)
+      
       all_shipment_list = shipments_query.order_by(Shipment.created_at.desc()).limit(100).all()
+      # chang sender with sender first name and last name and receiver city with city name
+      for shipment in all_shipment_list:
+            shipment.sender = User.query.get(shipment.sender).first_name + ' ' + User.query.get(shipment.sender).last_name
+            shipment.receiver_city = SystemCity.query.get(shipment.receiver_city).city
       all_shipment_count = shipments_query.count()
       pending_shipment_count = shipments_query.filter_by(status='Pending').count()
       delivered_shipment_count = shipments_query.filter_by(status='Delivered').count()
@@ -237,8 +242,17 @@ def all_shipment():
             shipments_query = Shipment.query
       else:
             shipments_query = Shipment.query.filter_by(sender=user_id)
-
+      
       all_shipment_list = shipments_query.all()
+      
+      for shipment in all_shipment_list:
+            shipment.sender = User.query.get(shipment.sender).first_name + ' ' + User.query.get(shipment.sender).last_name
+            receiver_city = SystemCity.query.get(shipment.receiver_city)
+            if receiver_city:
+                  shipment.receiver_city = receiver_city.city
+            else:
+                  shipment.receiver_city = "Unknown"
+
       context = {
             'title': "All Shipments",
             'all_shipment_list': all_shipment_list
