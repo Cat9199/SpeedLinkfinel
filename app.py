@@ -14,6 +14,7 @@ from io import BytesIO
 import pandas as pd
 import openpyxl
 
+from honeybadger.contrib import FlaskHoneybadger
 # Initialize Flask app
 app = Flask(__name__, static_folder='static', static_url_path='/static')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///speedlink.db'
@@ -22,6 +23,10 @@ app.config['SECRET_KEY'] = 'SpeedLink'
 app.config['API_URL'] = 'http://speedlink-delivery.com'
 app.config['API_VERSION'] = 'v1'
 app.config['API_NAME'] = 'speedlink'
+app.config['HONEYBADGER_ENVIRONMENT'] = 'production'
+app.config['HONEYBADGER_API_KEY'] = 'hbp_hchIlpnfKJmHUAb8sxgQ71G9xqlvVV0qpcn0'
+app.config['HONEYBADGER_PARAMS_FILTERS'] = 'password, secret, credit-card'
+FlaskHoneybadger(app, report_exceptions=True)
 app.permanent_session_lifetime = timedelta(days=30)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
